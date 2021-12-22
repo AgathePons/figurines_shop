@@ -6,7 +6,6 @@ const mainController = {
   homePage: async (req, res) => {
     try {
       const figurines = await dataMapper.getAllFigurines();
-      console.log(figurines);
       res.render('accueil', {
         figurines
       });
@@ -20,7 +19,6 @@ const mainController = {
     const id = req.params.id;
     try {
       const figurine = await dataMapper.getOneFigurine(id);
-      console.log(figurine);
       res.render('article', {
         figurine
       });
