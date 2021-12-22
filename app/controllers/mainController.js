@@ -6,10 +6,24 @@ const mainController = {
   homePage: async (req, res) => {
     try {
       const figurines = await dataMapper.getAllFigurines();
+      console.log('DANS HOMEPAGE CONTROLLER');
+      res.render('accueil', {
+        figurines,
+      });
+    } catch (error) {
+      console.error('hmm, an error occured:', error);
+      res.status(500).send('Oops!');
+    }
+  },
+  categoryPage: async (req, res) => {
+    const category = req.params.category;
+    
+    try {
+      const figurines = await dataMapper.getFigurinesByCategory(category);
       res.render('accueil', {
         figurines
       });
-    }catch(error) {
+    } catch (error) {
       console.error('hmm, an error occured:', error);
       res.status(500).send('Oops!');
     }
@@ -24,7 +38,7 @@ const mainController = {
         figurine,
         reviews
       });
-    }catch(error) {
+    } catch (error) {
       console.error('hmm, an error occured:', error);
       res.status(500).send('Oops!');
     }

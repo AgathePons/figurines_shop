@@ -8,15 +8,22 @@ const middlewares = require('./controllers/middlewares');
 const router = express.Router();
 
 router.use(middlewares.bookmarks);
+router.use(middlewares.sideMenu);
 
 // page d'accueil
 router.get('/', mainController.homePage);
 
+router.get('/:category', mainController.categoryPage);
 // page article
 router.get('/article/:id', mainController.articlePage);
 
-// page favoris
+console.log('avant bookmarks');
+//! Problème :
 router.get('/bookmarks', bookmarksController.bookmarksPage);
+/* router.use((req, res) => {
+  res.send('test');
+}); */
+console.log('après bookmarks');
 
 router.get('/bookmarks/add/:id', bookmarksController.addBookmark);
 router.get('/bookmarks/delete/:id', bookmarksController.deleteBookmark);

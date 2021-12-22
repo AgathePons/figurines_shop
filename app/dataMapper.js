@@ -9,9 +9,17 @@ const dataMapper = {
     const queryOneFigurine = `SELECT * FROM figurine WHERE id=${id};`;
     return (await client.query(queryOneFigurine)).rows[0];
   },
-  getReviews : async (id) => {
+  getReviews: async (id) => {
     const queryReviews = `SELECT * FROM review WHERE figurine_id=${id};`;
     return (await client.query(queryReviews)).rows;
+  },
+  getCategoriesAndNumber: async () => {
+    const query = 'SELECT category, COUNT(name) AS number FROM figurine GROUP BY category';
+    return (await client.query(query)).rows;
+  },
+  getFigurinesByCategory : async (category) => {
+    const sql = `SELECT * FROM figurine WHERE category='${category}'`;
+    return (await client.query(sql)).rows;
   }
 };
 

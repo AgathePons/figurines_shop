@@ -3,14 +3,12 @@ require('dotenv').config();
 
 
 const express = require('express');
-
 const session = require('express-session');
 // on importe le router
 const router = require('./app/router');
 
 // un peu de config
 const PORT = process.env.PORT || 5000;
-
 
 const app = express();
 

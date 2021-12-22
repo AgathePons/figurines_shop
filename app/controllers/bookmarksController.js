@@ -1,10 +1,10 @@
-const { redirect } = require('statuses');
 const dataMapper = require('../dataMapper');
 
 const bookmarksController = {
   // méthode pour afficher les favoris
   bookmarksPage: (req, res) => {
- 
+    console.log('ON EST DEDANS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log('req.session.bookmark : ', req.session.bookmark);
     const favorites = req.session.bookmark;
     res.render('favoris', {favorites});
   },
