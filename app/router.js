@@ -3,9 +3,11 @@ const express = require('express');
 // on importe nos controllers
 const mainController = require('./controllers/mainController');
 const bookmarksController = require('./controllers/bookmarksController');
-
+const middlewares = require('./controllers/middlewares');
 
 const router = express.Router();
+
+router.use(middlewares.bookmarks);
 
 // page d'accueil
 router.get('/', mainController.homePage);
@@ -14,9 +16,9 @@ router.get('/', mainController.homePage);
 router.get('/article/:id', mainController.articlePage);
 
 // page favoris
-router.get('/bookmarks', bookmarksController.bookmarksPage );
+router.get('/bookmarks', bookmarksController.bookmarksPage);
 
-router.get('/bookmarks/add/:id', bookmarksController.addBookmark );
+router.get('/bookmarks/add/:id', bookmarksController.addBookmark);
 router.get('/bookmarks/delete/:id', bookmarksController.deleteBookmark);
 
 // on exporte le router 

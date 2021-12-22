@@ -19,8 +19,10 @@ const mainController = {
     const id = req.params.id;
     try {
       const figurine = await dataMapper.getOneFigurine(id);
+      const reviews = await dataMapper.getReviews(id);
       res.render('article', {
-        figurine
+        figurine,
+        reviews
       });
     }catch(error) {
       console.error('hmm, an error occured:', error);
