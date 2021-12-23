@@ -3,12 +3,10 @@ const path = require('path');
 const bookmarksController = {
 
   // méthode pour afficher les favoris
-  bookmarksPage: (request, response) => {
-    const filePath = path.resolve(__dirname + '/../../integration/favoris.html');
-    response.sendFile(filePath);
+  bookmarksPage: (req, res) => {
+    res.render('favoris');
   }
 
 };
-
 
 module.exports = bookmarksController;

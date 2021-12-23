@@ -1,0 +1,28 @@
+{
+  "name": "s04-ofig-blue",
+  "version": "1.0.0",
+  "description": "correction",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-dev index.js --no-notify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com:O-clock-Zagreus/oFig-correction.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://https://github.com/O-clock-Zagreus/oFig-correction/issues"
+  },
+  "homepage": "https://github.com/O-clock-Zagreus/S04-OFig-BLUE#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "eslint": "^8.5.0",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "pg": "^8.7.1"
+  }
+}
