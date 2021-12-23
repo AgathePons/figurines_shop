@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://https://github.com/O-clock-Zagreus/oFig-correction/issues"
   },
-  "homepage": "https://github.com/O-clock-Zagreus/S04-OFig-BLUE#readme",
+  "homepage": "https://https://github.com/O-clock-Zagreus/oFig-correction",
   "dependencies": {
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
