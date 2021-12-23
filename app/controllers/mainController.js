@@ -21,11 +21,9 @@ const mainController = {
   articlePage: async (req, res, next) => {
     const id = req.params.id;
     try {
-      const figurine = await dataMapper.getOneFigurine(id);
+      const figurine = await dataMapper.getOneFigurineNew(id);
       if (figurine) {
-        res.render('article', {
-          figurine
-        });
+        res.render('article', figurine);
       } else {
         next();
       }
