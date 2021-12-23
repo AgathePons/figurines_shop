@@ -21,6 +21,10 @@ app.use(express.static('integration'));
 // routage !
 app.use(router);
 
+// 404
+app.use((req, res) => {
+  res.status(404).render('notFound');
+});
 
 // on lance le serveur
 app.listen(PORT, () => {
