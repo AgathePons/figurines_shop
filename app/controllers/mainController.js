@@ -1,7 +1,6 @@
 const dataMapper = require('../dataMapper');
 
 const mainController = {
-
   // méthode pour la page d'accueil
   homePage: async (req, res, next) => {
     try {
@@ -18,7 +17,6 @@ const mainController = {
       res.status(500).send('Oops!');
     }
   },
-
   // méthode pour la page article
   articlePage: async (req, res, next) => {
     const id = req.params.id;
@@ -36,8 +34,6 @@ const mainController = {
       res.status(500).send('Oops!');
     }
   }
-
 };
-
 
 module.exports = mainController;

@@ -28,9 +28,9 @@
                     <br>
                     <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
                   </p>
-                  <h5>$24.99</h5>
+                  <h5>$<%= figurine.price %></h5>
                   <p class="card-text">
-                    <a href="#" class="link-add-bookmarks">+ Ajouter aux favoris</a>
+                    <a href="/bookmarks/add/<%= figurine.id %>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
                   </p>
               </div>
             </div>
