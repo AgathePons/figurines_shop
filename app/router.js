@@ -7,6 +7,9 @@ const bookmarksController = require('./controllers/bookmarksController');
 
 const router = express.Router();
 
+// for all routes, middleware leftMenu
+router.use('/', mainController.leftMenu);
+
 // page d'accueil
 router.get('/', mainController.homePage);
 

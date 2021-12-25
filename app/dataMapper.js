@@ -1,14 +1,30 @@
 const client = require('./database');
 
 const dataMapper = {
-  getAllFigurines: async () => {
-    const queryFigurines = 'SELECT * FROM figurine;';
-    return (await client.query(queryFigurines)).rows;
+  getAllFigurines: async (category) => {
+    // expression ternaire : <condition> ? <si condition vrai> : <si condition fausse>
+    // const a = true ? 13 : 14;
+    // ternaire version, but quote hell
+    //const query = `SELECT * FROM "figurine" ${category ? "WHERE category = '"+ category + "'" : ''}`;
+
+    let sql = 'SELECT * FROM "figurine"';
+    let values = null;
+    if (category) {
+      sql += ' WHERE category = $1';
+      values = [category];
+    }
+    //! log ----
+    console.log('CATEGORY in argument:', category);
+    console.log('my query:', sql);
+    console.log('VALUES:', values);
+    //! --------
+    return (await client.query(sql, values)).rows;
   },
   getOneFigurine: async (id) => {
     const queryOneFigurine = `SELECT * FROM figurine WHERE id=${Number(id)};`;
     return (await client.query(queryOneFigurine)).rows[0];
   },
+  // version with reviews
   getOneFigurineNew: async (id) => {
     const query = `
       SELECT f.*, r.* FROM figurine f 
@@ -25,7 +41,11 @@ const dataMapper = {
     } else { // else return null
       return null;
     }
-    
+  },
+  getNumberByCategory: async () => {
+    const sql = 'SELECT category, COUNT(name) as number FROM figurine GROUP BY category;';
+    const result = await client.query(sql);
+    return result.rows;
   }
 };
 
