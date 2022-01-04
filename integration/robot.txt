@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /bookmarks
+
+Sitemap: https://monsite.com/sitemap.xml
