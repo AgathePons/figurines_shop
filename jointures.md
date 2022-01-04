@@ -1,4 +1,4 @@
-## Jointures en bdd
+# Jointures en bdd
 
 ```SELECT f.id, r.note FROM figurine f JOIN review r ON r.figurine_id = f.id;```
 
@@ -16,3 +16,12 @@ Comment faire le lien ? En utilisant la clef étrangere d'entité jointe avec l'
 
 
 ```SELECTIONNE <champs> DEPUIS <tableA> <A> QUI EST LIEE A <tableB> <B> SELON <B>.<champAvecClefEtrangere> QUI EST EGAL A <tableA>.<identifiant>```
+
+## Le super bonus
+
+```sql
+SELECT figurine.*, AVG(review.note) AS note 
+FROM figurine 
+JOIN review ON figurine.id=review.figurine_id
+GROUP BY figurine.id;
+```

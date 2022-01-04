@@ -7,12 +7,16 @@ const dataMapper = {
     // ternaire version, but quote hell
     //const query = `SELECT * FROM "figurine" ${category ? "WHERE category = '"+ category + "'" : ''}`;
 
-    let sql = 'SELECT * FROM "figurine"';
+    let sql = 'SELECT figurine.*, ROUND(AVG(review.note)) AS note FROM figurine JOIN review ON figurine.id=review.figurine_id';
     let values = null;
+
     if (category) {
       sql += ' WHERE category = $1';
       values = [category];
     }
+
+    sql += ' GROUP BY figurine.id;';
+
     //! log ----
     console.log('CATEGORY in argument:', category);
     console.log('my query:', sql);
