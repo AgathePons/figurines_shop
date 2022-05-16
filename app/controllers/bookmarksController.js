@@ -37,7 +37,6 @@ const bookmarksController = {
   removeBookmark: (req, res) => {
     const id = req.params.id;
     req.session.bookmarks = req.session.bookmarks.filter(b => b.id !== Number(id));
->>>>>>> correction
     res.redirect('/bookmarks');
   }
 };
