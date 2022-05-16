@@ -14,24 +14,22 @@
               <th></th>
             </thead>
             <tbody>
-              <% for (const favorite of favorites) { %>
-                <tr>
-                  <td>
-                    <img class="img-thumbnail img-cart-list" src="./images/<%= favorite.name.toLowerCase() %>.png" alt="figurinde de <%= favorite.name %>">
-                    <div class="item-description">
-                        <h5 class="item-title"><%= favorite.name %></h5>
-                    </div>
-                  </td>
-  
-                  <td>
-                    <p class="item-subtotal">$<%= favorite.price %></p>
-                  </td>
-                  <td>
-                    <a href="/bookmarks/delete/<%= favorite.id %>">Enlever de la liste</a>
-                  </td>
-                </tr>
+              <% for (const figurine of bookmarks) { %>
+              <tr>
+                <td>
+                  <img class="img-thumbnail img-cart-list" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="Figurine de <%= figurine.name %>">
+                  <div class="item-description">
+                      <h5 class="item-title">Tifa</h5>
+                  </div>
+                </td>
+                <td>
+                  <p class="item-subtotal">$24.99</p>
+                </td>
+                <td>
+                  <a href="/bookmarks/delete/<%= figurine.id %>">Enlever de la liste</a>
+                </td>
+              </tr>
               <% } %>
-            </tbody>
           </table>
 
           <div class="row">
@@ -46,6 +44,5 @@
       </div>
   </div>
 
-
   <%- include('partials/footer') %>
-  
+

@@ -3,30 +3,25 @@ const express = require('express');
 // on importe nos controllers
 const mainController = require('./controllers/mainController');
 const bookmarksController = require('./controllers/bookmarksController');
-const middlewares = require('./controllers/middlewares');
 
 const router = express.Router();
 
-router.use(middlewares.bookmarks);
-router.use(middlewares.sideMenu);
+// for all routes, middleware leftMenu
+router.use('/', mainController.leftMenu);
 
 // page d'accueil
 router.get('/', mainController.homePage);
 
-router.get('/:category', mainController.categoryPage);
 // page article
 router.get('/article/:id', mainController.articlePage);
 
-console.log('avant bookmarks');
-//! Problème :
-router.get('/bookmarks', bookmarksController.bookmarksPage);
-/* router.use((req, res) => {
-  res.send('test');
-}); */
-console.log('après bookmarks');
+// if url begins with /bookmarks, trigger middleware checkBookmarks to initialize req.session.bookmarks if doesn't exist yet
+router.use('/bookmarks', bookmarksController.checkBookmarksSet);
+// page favoris
+router.get('/bookmarks', bookmarksController.bookmarksPage );
 
 router.get('/bookmarks/add/:id', bookmarksController.addBookmark);
-router.get('/bookmarks/delete/:id', bookmarksController.deleteBookmark);
+router.get('/bookmarks/delete/:id', bookmarksController.removeBookmark);
 
 // on exporte le router 
 module.exports = router;
